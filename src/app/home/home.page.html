@@ -1,20 +1,58 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content no-padding>
+  <div class="main">
+    <ion-card no-margin>
+      <ion-card-content>
+        <ion-row class="row">
+          <div class="fire-logo">
+            <img src="assets/logo.png" class="img-logo">
+          </div>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="sendSms()" color="undefined" class="transition" [disabled]="isReceiveButtonClicked">
+              <strong class="white">
+                SEND SMS</strong></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" (click)="start()" color="undefined" class="transition" [disabled]="isReceiveButtonClicked">
+              <strong class="white">
+                RECEIVE SMS</strong></ion-button>
+          </ion-col>
+        </ion-row>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+        <ion-list>
+          <ion-item *ngIf = "isSendButtonClicked">
+            <ion-label>{{ countOfSentMessages }}  /  {{ vendorCount }}</ion-label>
+            <ion-note slot="end">Messages SENT</ion-note>
+          </ion-item>
+          <ion-item *ngIf = "isReceiveButtonClicked">
+            <ion-label>{{ countOfReceivedMessages }}  /  {{ countOfSentMessages }}</ion-label>
+            <ion-note slot="end">Messages RECEIVED</ion-note>
+          </ion-item>
+          <ion-item *ngIf = "isReceiveButtonClicked">
+            <ion-label>{{ countOfVendorsUpdated }}  /  {{ countOfReceivedMessages }}</ion-label>
+            <ion-note slot="end">Vendors UPDATED</ion-note>
+          </ion-item>
+        </ion-list>
+        
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="stop()" color="undefined" class="transition">
+              <strong class="white">
+                STOP / RESET</strong></ion-button>
+          </ion-col>
+        </ion-row>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
+
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Vendor Fuel Price Update
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

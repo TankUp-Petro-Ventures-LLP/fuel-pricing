@@ -1,5 +1,7 @@
 {
   "name": "TankUpxFUELPricing",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
