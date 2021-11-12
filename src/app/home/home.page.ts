@@ -47,10 +47,10 @@ export class HomePage {
         this.hpclDealer.push(this.dealerCodes[i].dealer_code)}
 
       else if (this.dealerCodes[i].oil_company_id === 3)
-      this.ioclDealer.push(this.dealerCodes[i].dealer_code)
+        this.ioclDealer.push(this.dealerCodes[i].dealer_code)
 
       else if(this.dealerCodes[i].oil_company_id === 4)
-      this.bpclDealer.push(this.dealerCodes[i].dealer_code)
+        this.bpclDealer.push(this.dealerCodes[i].dealer_code)
     }
   }
 
@@ -75,7 +75,7 @@ export class HomePage {
             this.ref.detectChanges();
             this.processSMS(IncomingSMS);
           }
-          else if (IncomingSMS.body.indexOf('Get Started') != -1)
+          else if (IncomingSMS.body.indexOf('HELLO TANKUP') != -1)
             this.sendSms(1);
         });
       },
