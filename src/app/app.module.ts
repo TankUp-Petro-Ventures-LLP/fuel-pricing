@@ -1,17 +1,18 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-
-import { HttpClientModule } from '@angular/common/http';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { ApiService } from './api.service';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,8 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiService,
-    BackgroundMode
+    BackgroundMode,
+    AndroidPermissions
   ],
   bootstrap: [AppComponent]
 })

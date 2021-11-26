@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
 import { AlertController } from '@ionic/angular';
@@ -26,7 +27,14 @@ export class HomePage {
 
   vendorCount: number = 0;
 
-  constructor(private alertCtrl: AlertController, private sms: SMS, public apiService: ApiService, private backgroundMode: BackgroundMode, private ref: ChangeDetectorRef) {
+  constructor(private alertCtrl: AlertController, private sms: SMS, public apiService: ApiService, private backgroundMode: BackgroundMode, private ref: ChangeDetectorRef, public androidPermissions: AndroidPermissions) {
+    this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.SEND_SMS).then((data:any) => {
+      if(data.hasPermission) {
+         console.log("have permission");
+      }
+    })
+    .catch(err => console.log(err, 'errrrrr')
+    );
     this.backgroundMode.enable();
     this.getAllVendors()
   }
