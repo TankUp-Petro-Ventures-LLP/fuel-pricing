@@ -15,7 +15,7 @@ export class ApiService {
 
   async getDealerCodes() {
     return this.http
-                .get(`http://${Config.API_URL}:3000/api/vendor/dealer-codes`, httpOptions)
+                .get(`http://${Config.API_URL}/api/vendor/dealer-codes`, httpOptions)
                 .toPromise()
                 .then(res => {
                   // console.log('RESULT :: ', res)
@@ -29,7 +29,7 @@ export class ApiService {
 
   updateVendorPricing(obj) {
     return this.http
-                .post(`http://${Config.API_URL}:3000/api/vendor/daily-vendor-pricing`, obj, httpOptions)
+                .post(`http://${Config.API_URL}/api/vendor/daily-vendor-pricing`, obj, httpOptions)
                 .toPromise()
                 .then(res => {
                   // console.log('RESULT ::: ', res)
@@ -43,7 +43,7 @@ export class ApiService {
 
   updateCityPricing(obj) {
     return this.http
-                .post(`http://${Config.API_URL}:3000/api/vendor/daily-city-pricing`, obj, httpOptions)
+                .post(`http://${Config.API_URL}/api/vendor/daily-city-pricing`, obj, httpOptions)
                 .toPromise()
                 .then(res => {
                   // console.log('RESULT ::: ', res)

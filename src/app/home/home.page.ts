@@ -140,43 +140,27 @@ export class HomePage {
 
   processSMSHpcl(message) {
     let dealerCode = message.substring(message.indexOf('(') + 1, message.indexOf(')'));
-    let price = message.substring(message.indexOf('Diesel') + 7, message.indexOf('Power') - 1);
-    let priceObj = {
-      'dealerCode' : dealerCode,
-      'price': price
-    }
+    let petrolPrice = message.substring(message.indexOf('Petrol') + 7, message.indexOf('Diesel') - 1);
+    let dieselPrice = message.substring(message.indexOf('Diesel') + 7, message.indexOf('Power') - 1);
+    let priceObj = { dealerCode, petrolPrice, dieselPrice };
     this.apiService.updateVendorPricing(priceObj);
-    console.log('DEALER CODE: ', dealerCode);
-    console.log('PRICE: ', price);
   }
 
   processSMSBpcl(message) {
     let dealerCode = message.substring(message.indexOf('(') + 1, message.indexOf(')'));
-    let price = message.substring(message.indexOf('Diesel') + 7, message.indexOf('Diesel') + 12);
-    if(price.slice(-1) === ',')
-      price = price.slice(0, -1);
-    let priceObj = {
-      'dealerCode' : dealerCode,
-      'price': price
-    }
+    let petrolPrice = message.substring(message.indexOf('Petrol') + 7, message.indexOf('Speed') - 1);
+    let dieselPrice = message.substring(message.indexOf('Diesel') + 7, message.indexOf('Petrol') - 1);
+    let priceObj = { dealerCode, petrolPrice, dieselPrice };
     this.apiService.updateVendorPricing(priceObj);
-    console.log('DEALER CODE: ', dealerCode);
-    console.log('PRICE: ', price);
   }
 
   processSMSIocl(message) {
     let indexOfFirstDigit = message.search(/\d/);
     let dealerCode = message.substring(indexOfFirstDigit, indexOfFirstDigit + 6);
-    let price = message.substring(message.indexOf('Rs ') + 3, message.indexOf('Rs ') + 8);
-    if(price.slice(-1) === ',')
-      price = price.slice(0, -1);
-    let priceObj = {
-      'dealerCode' : dealerCode,
-      'price': price
-    }
+    let petrolPrice = message.substring(message.indexOf('Petrol') - 12, message.indexOf('Petrol') - 7);
+    let dieselPrice = message.substring(message.indexOf('Diesel') - 12, message.indexOf('Diesel') - 7);
+    let priceObj = { dealerCode, petrolPrice, dieselPrice };
     this.apiService.updateVendorPricing(priceObj);
-    console.log('DEALER CODE: ', dealerCode);
-    console.log('PRICE: ', price);
   }
 
   stop() {
