@@ -148,8 +148,10 @@ export class HomePage {
 
   processSMSBpcl(message) {
     let dealerCode = message.substring(message.indexOf('(') + 1, message.indexOf(')'));
-    let petrolPrice = message.substring(message.indexOf('Petrol') + 7, message.indexOf('Speed') - 1);
+    let petrolPrice = message.substring(message.indexOf('Petrol') + 7, message.indexOf('Petrol') + 13);
     let dieselPrice = message.substring(message.indexOf('Diesel') + 7, message.indexOf('Petrol') - 1);
+    if(petrolPrice.slice(-1) === ' ')
+      petrolPrice = petrolPrice.slice(0, -1);
     let priceObj = { dealerCode, petrolPrice, dieselPrice };
     this.apiService.updateVendorPricing(priceObj);
   }
